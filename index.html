@@ -1,13 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage with Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab:hover {
+            background-color: #ddd;
+        }
+        .tab.active {
+            background-color: #ccc;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello, thanks for stopping by!</h1>
-<p>This is Anner Paldor's personal webpage, currently under construction</p>
-<p>Until I get this page organized, feel free to check out my other webpages and get in touch:</p>
-<br>
-<a href="https://linkedin.com/in/anner-paldor/">Linkedin</a><br>
-<a href="https://scholar.google.co.il/citations?user=39NGsnIAAAAJ&hl=en&oi=ao">Google Scholar</a>
 
-<h2>Happy coding!</h2>
+    <div class="tab" onclick="showTabContent(event, 'tab1')">Tab 1</div>
+    <div class="tab" onclick="showTabContent(event, 'tab2')">Tab 2</div>
+    <div class="tab" onclick="showTabContent(event, 'tab3')">Tab 3</div>
+    <div class="tab" onclick="showTabContent(event, 'tab4')">Tab 4</div>
+    <div class="tab" onclick="showTabContent(event, 'tab5')">Tab 5</div>
+
+    <div id="tab1" class="tab-content">
+        <h2>Content for Tab 1</h2>
+        <p>This is the content of tab 1.</p>
+    </div>
+    <div id="tab2" class="tab-content">
+        <h2>Content for Tab 2</h2>
+        <p>This is the content of tab 2.</p>
+        <img src="image1.jpg" alt="Image 1">
+    </div>
+    <div id="tab3" class="tab-content">
+        <h2>Content for Tab 3</h2>
+        <p>This is the content of tab 3.</p>
+        <img src="image2.jpg" alt="Image 2">
+    </div>
+    <div id="tab4" class="tab-content">
+        <h2>Content for Tab 4</h2>
+        <p>This is the content of tab 4.</p>
+    </div>
+    <div id="tab5" class="tab-content">
+        <h2>Content for Tab 5</h2>
+        <p>This is the content of tab 5.</p>
+        <img src="image3.jpg" alt="Image 3">
+    </div>
+
+    <script>
+        function showTabContent(event, tabId) {
+            // Hide all tab content
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            // Show the current tab content
+            document.getElementById(tabId).classList.add('active');
+            // Add active class to the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        // Show the first tab content by default
+        document.getElementsByClassName('tab')[0].click();
+    </script>
+
 </body>
 </html>
